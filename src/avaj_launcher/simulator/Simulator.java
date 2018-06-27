@@ -11,8 +11,9 @@ public class Simulator {
 
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
+    private static Logger  myLogger =  new Logger();
 
-    public static void main(String [] arg)
+    public static void main(String [] arg) throws InterruptedException
     {
         if (arg.length != 1)
         {
@@ -37,7 +38,6 @@ public class Simulator {
                     System.exit(1);
                 }
 
-
                 while ((line = br.readLine()) != null) {
                     Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1], Integer.parseInt(line.split(" ")[2]),
                             Integer.parseInt(line.split(" ")[3]), Integer.parseInt(line.split(" ")[4]));
@@ -49,15 +49,24 @@ public class Simulator {
                     item.registerTower(weatherTower);
                 }
 
-                for (int i = 1; i < numberOfSimulations; i++) {
-                    //System.out.println("-----tests run-------" + i);
+                for (int i = 0; i < numberOfSimulations; i++) {
                     weatherTower.changeWeather();
                 }
             }
+            myLogger.writeToFile();
         }
-        catch (Exception e)
+        catch (FileNotFoundException e)
         {
-            System.out.println(e);
+            System.out.println("Could not find file: " + arg[0]);
+        }
+        catch(IOException e)
+        {
+            System.out.println("There was an error while reading from file : " + arg[0]);
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("Specify simulation file");
         }
     }
+
 }

@@ -1,17 +1,18 @@
 package avaj_launcher.simulator;
 
-import avaj_launcher.weather.Coordinates;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Formatter;
 
 public class Logger {
 
     private static List<String> loggerOutput = new ArrayList<String>();
-    private String newFile;
+    private Formatter newFile;
 
     public void logMessage(String message)
     {
         loggerOutput.add(message);
     }
-
 
     private void openFile()
     {

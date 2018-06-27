@@ -5,7 +5,11 @@ import avaj_launcher.weather.Coordinates;
 
 public interface Flyable
 {
-	public	void	updateConditions();
-	public	void	registerTower(WeatherTower WeatherTower);
-	Coordinates getCoordinates();
+	void            updateConditions();
+	void            registerTower(WeatherTower WeatherTower);
+	Coordinates     getCoordinates();
+    String          getType();
+    String          getName();
+    long            getID();
+
 }

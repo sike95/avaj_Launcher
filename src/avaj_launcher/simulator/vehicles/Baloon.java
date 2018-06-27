@@ -8,6 +8,7 @@ public  class Baloon extends Aircraft implements Flyable
     private WeatherTower    weathertower;
     private String           weather;
     private String          message;
+    Logger myLogger = new Logger();
 
     public Baloon(String name, Coordinates coordinates)
     {
@@ -18,6 +19,8 @@ public  class Baloon extends Aircraft implements Flyable
     {
         coordinates = super.coordinates;
         this.weather = weathertower.getWeather(coordinates);
+        Logger myLogger = new Logger();
+
         switch (weather)
         {
             case "SUN":
@@ -42,6 +45,7 @@ public  class Baloon extends Aircraft implements Flyable
                         this.type, this.name, this.id);
                 break;
         }
+        myLogger.logMessage(message);
     }
 
     public void setWeathertower(WeatherTower weathertower) {
@@ -52,7 +56,9 @@ public  class Baloon extends Aircraft implements Flyable
     public  void            registerTower(WeatherTower weathertower)
     {
             setWeathertower(weathertower);
-            System.out.printf("Tower says: %s#%s(%d) registered to weather to tower \n", this.type, this.name, this.id);
+            message = String.format("Tower says: %s#%s(%d) registered to weather to tower \n",
+                    this.type, this.name, this.id);
+            myLogger.logMessage(message);
             weathertower.register(this);
     }
 
@@ -61,4 +67,7 @@ public  class Baloon extends Aircraft implements Flyable
     public Coordinates getCoordinates() {
         return coordinates;
     }
+    public String       getType(){return type;}
+    public String       getName(){return name;}
+    public long         getID(){return id;}
 }
