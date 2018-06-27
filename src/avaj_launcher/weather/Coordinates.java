@@ -1,28 +1,36 @@
 package avaj_launcher.weather;
 
-import avaj_launcher.simulator.vehicle.*;
-
-public class	Coordinates extends Aircraft
+public class	Coordinates
 {
 	private	int		logitude;
 	private	int		latitude;
 	private int		height;
 
-	public void		getLogitude()
-    {
-
-    }
-	public void		getLatitude()
-    {
-
-    }
-	public void		getHeight()
-    {
-
+    public int getLogitude() {
+        return logitude;
     }
 
-    public  Coordinates(int logitude, int latitude, int height)
-    {
+    public int getLatitude() {
+        return latitude;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setLogitude(int logitude) {
+        this.logitude = logitude;
+    }
+
+    public void setLatitude(int latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public Coordinates(int logitude, int latitude, int height) {
         this.logitude = logitude;
         this.latitude = latitude;
         this.height = height;
