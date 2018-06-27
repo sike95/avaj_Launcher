@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class WeatherProvider {
 
-    private static WeatherProvider weatherProvider; // TODO: Unclear of what to to with this please revisit : it will instaniate itself to recreate a weather provider instance
+    private static WeatherProvider weatherProvider = new WeatherProvider(); // TODO: Unclear of what to to with this please revisit : it will instaniate itself to recreate a weather provider instance
     private static String          weather;
 
     private WeatherProvider() {
@@ -32,8 +32,10 @@ public class WeatherProvider {
     }
 
     public static WeatherProvider getWeatherProvider() {
+
         return weatherProvider;
     }
+
     public static String getWeather() {
         return weather;
     }

@@ -29,9 +29,8 @@ public class Simulator {
             line = br.readLine();
 
             if (line != null) {
-                weatherTower = new WeatherTower();
 
-                int numberOfSimulations = Integer.parseInt(line.split("")[0]);
+                int numberOfSimulations = Integer.parseInt(line.split(" ")[0]);
 
                 if (numberOfSimulations < 0) {
                     System.out.println("Invalid number of simulations: " + numberOfSimulations);
@@ -45,13 +44,14 @@ public class Simulator {
                     System.out.println(line);
                     flyables.add(flyable);
                 }
-
+                weatherTower = new WeatherTower();
                 for (Flyable item : flyables) {
                     item.registerTower(weatherTower);
                 }
 
                 for (int i = 1; i < numberOfSimulations; i++) {
-                   weatherTower.changeWeather();
+                    //System.out.println("-----tests run-------" + i);
+                    weatherTower.changeWeather();
                 }
             }
         }
