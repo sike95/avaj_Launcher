@@ -10,7 +10,6 @@ public  class Helicopter extends Aircraft implements Flyable
     private String          weather;
     private Coordinates     coordinates;
     private String          message;
-    Logger myLogger = new Logger();
 
     public Helicopter(String name, Coordinates coordinates)
     {
@@ -49,7 +48,7 @@ public  class Helicopter extends Aircraft implements Flyable
                         this.type, this.name, this.id);
                 break;
         }
-        myLogger.logMessage(message);
+        Logger.getInstance().logMessage(message);
     }
 
     public  void            registerTower(WeatherTower weathertower)
@@ -57,7 +56,7 @@ public  class Helicopter extends Aircraft implements Flyable
         setWeathertower(weathertower);
         message = String.format("Tower says: %s#%s(%d) registered to weather to tower \n",
                 this.type, this.name, this.id);
-        myLogger.logMessage(message);
+        Logger.getInstance().logMessage(message);
         weathertower.register(this);
     }
 

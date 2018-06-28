@@ -6,7 +6,8 @@ RUN_PATH=avaj_launcher.simulator.Simulator
 LIBS=$(DIR_PATH)simulator $(DIR_PATH)simulator/vehicles  $(DIR_PATH)weather
 
 complie:
-	@find . -name *.java > sources.txt
+	find . -name *.java > sources.txt
+	@echo "Found all files"
 	@javac -cp -sourcepath @sources.txt
 	@echo "Compilation is done. Ready to Run."
 	@echo "\nTo launch this program, Enter \"make run FILE=\" specify source file IMMEDIATELY after the = sign "

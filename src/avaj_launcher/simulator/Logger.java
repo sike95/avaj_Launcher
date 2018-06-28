@@ -8,6 +8,13 @@ public class Logger {
 
     private static List<String> loggerOutput = new ArrayList<String>();
     private Formatter newFile;
+    private static Logger myLogger = new Logger();
+
+
+    private Logger()
+    {
+
+    }
 
     public void logMessage(String message)
     {
@@ -35,6 +42,11 @@ public class Logger {
     private void closeFile()
     {
         newFile.close();
+    }
+
+    public static Logger getInstance()
+    {
+        return myLogger;
     }
 
     public void writeToFile()

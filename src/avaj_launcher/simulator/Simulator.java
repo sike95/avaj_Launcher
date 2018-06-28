@@ -11,13 +11,13 @@ public class Simulator {
 
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
-    private static Logger  myLogger =  new Logger();
 
     public static void main(String [] arg) throws InterruptedException
     {
         if (arg.length != 1)
         {
-            throw new IllegalArgumentException("Exactly 1 parameters required: Please parse the name of a text file that will contain the scenario that needs to be simulated.");
+            throw new IllegalArgumentException("Exactly 1 parameters required: " +
+                    "Please parse the name of a text file that will contain the scenario that needs to be simulated.");
         }
 
         String file = arg[0];
@@ -39,7 +39,8 @@ public class Simulator {
                 }
 
                 while ((line = br.readLine()) != null) {
-                    Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1], Integer.parseInt(line.split(" ")[2]),
+                    Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
+                            Integer.parseInt(line.split(" ")[2]),
                             Integer.parseInt(line.split(" ")[3]), Integer.parseInt(line.split(" ")[4]));
                     System.out.println(line);
                     flyables.add(flyable);
@@ -53,7 +54,7 @@ public class Simulator {
                     weatherTower.changeWeather();
                 }
             }
-            myLogger.writeToFile();
+            Logger.getInstance().writeToFile();
         }
         catch (FileNotFoundException e)
         {

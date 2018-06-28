@@ -8,7 +8,6 @@ public	class Tower
 {
 	private static List<Flyable> observers = new ArrayList<Flyable>();
 	private static List<Flyable> landed = new ArrayList<>();
-    Logger myLogger =       new Logger();
 
 	protected	void	conditionsChanged()
 	{
@@ -16,7 +15,7 @@ public	class Tower
             flyable.updateConditions();
             if(flyable.getCoordinates().getHeight() <= 0) {
                 landed.add(flyable);
-                myLogger.logMessage(String.format("%s#%s(%d) has landed \n",
+                Logger.getInstance().logMessage(String.format("%s#%s(%d) has landed \n",
                         flyable.getType(), flyable.getName(), flyable.getID()));
             }
         }
